@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Heap Lab — live memory map</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>⊚ Heap Lab <span class="sub">— three allocators, one trace, live memory maps</span></h1>
+  <p class="note">The C implementations in <code>kernel/</code> are the authoritative ones (tested in CI).
+  These are faithful JS ports so the visualization runs anywhere. See the
+  <a href="https://github.com/sudeanb/heap-lab">repo</a>.</p>
+</header>
+
+<section class="controls">
+  <label>workload
+    <select id="preset">
+      <option value="1">A — small objects (seed 1)</option>
+      <option value="7">B — churn (seed 7)</option>
+      <option value="42">C — fragmentation pressure (seed 42)</option>
+    </select>
+  </label>
+  <label>speed <input type="range" id="speed" min="2" max="120" value="30"> <span id="speedVal">30 ops/s</span></label>
+  <button id="play" class="primary">▶ play</button>
+  <button id="step">step</button>
+  <button id="reset">reset</button>
+  <button id="bench">⚡ benchmark</button>
+</section>
+
+<main id="panels"></main>
+
+<section id="benchOut" hidden>
+  <h2>⚡ in-browser benchmark <span class="sub">(JS ports, same churn workload)</span></h2>
+  <div id="benchBars" class="bars"></div>
+</section>
+
+<footer>
+  <p>free-list: first-fit · buddy: power-of-2 split/merge · slab: fixed-size pools · pool = 64 KiB per allocator ·
+     <a href="https://github.com/sudeanb/heap-lab#readme">how it works</a></p>
+</footer>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
