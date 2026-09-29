@@ -47,8 +47,9 @@ void fl_stats(free_list_t *h, heap_stats_t *out);
 
 typedef struct {
     uint8_t pool[HEAP_SIZE];
-    uint32_t free_list[17][MAX_ALLOCATIONS / 4];  /* per-order free lists */
-    int free_count[17];
+    uint32_t free_list[21][MAX_ALLOCATIONS / 4];  /* per-order free lists; order 20 covers the 1 MiB pool */
+    int free_count[21];
+    int top_order;                                 /* log2(HEAP_SIZE), seeded in bd_init */
     alloc_record_t allocs[MAX_ALLOCATIONS];
     int alloc_count;
     heap_stats_t stats;

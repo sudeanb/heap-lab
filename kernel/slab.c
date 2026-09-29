@@ -28,6 +28,8 @@ void sl_free(slab_t *h, void *ptr) {
     uint32_t off = (uint32_t)((uint8_t *)ptr - h->pool);
     uint32_t idx = off / h->obj_size;
     if (idx < h->used) h->stats.total_frees++;
+    for (int i = 0; i < h->alloc_count; i++)
+        if (h->allocs[i].alive && h->allocs[i].offset == off) { h->allocs[i].alive = 0; break; }
     /* slab doesn't reclaim — fixed-size pools are recycled wholesale */
 }
 
