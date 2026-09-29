@@ -1,0 +1,8 @@
+{
+  "name": "heap-lab",
+  "version": "0.1.0",
+  "description": "⊚ Three memory allocators (free-list, buddy, slab) with fragmentation analysis and trace simulation. Zero dependencies.",
+  "scripts": { "test": "make test" },
+  "keywords": ["allocator", "memory-management", "buddy", "slab", "fragmentation", "osdev"],
+  "license": "MIT"
+}
