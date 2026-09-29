@@ -21,3 +21,4 @@ int main(void) {
     printf("all alloc tests passed\n");
     return 0;
 }
+/* slab tests — separate binary since slab has a different init */
